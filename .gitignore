@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# next.js build output
+.next/
+out/
+build/
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# photo harvest cache — regenerate with `npm run gen:images`
+.photo-cache/
+
+# env / secrets
+.env*
+!.env.example
+*.pem
+
+# misc
+.DS_Store
+Thumbs.db
+npm-debug.log*
+yarn-error.log*
+.vercel

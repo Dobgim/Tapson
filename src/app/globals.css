@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens — "RIVA Next Generation"
+   Ink-dark chrome, a single hot accent, warm neutral surfaces.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-ink-950: #06080b;
+  --color-ink-900: #0a0d12;
+  --color-ink-850: #10141b;
+  --color-ink-800: #161b23;
+  --color-ink-700: #222932;
+  --color-ink-600: #333c48;
+  --color-ink-500: #55606f;
+  --color-ink-400: #8590a0;
+  --color-ink-300: #b3bcc8;
+  --color-ink-200: #d7dde5;
+  --color-ink-100: #eef1f5;
+  --color-ink-50: #f7f9fb;
+
+  --color-accent-600: #b81410;
+  --color-accent-500: #d81f18;
+  --color-accent-400: #ec2f24;
+  --color-accent-300: #ff5a4d;
+
+  --color-marine-500: #0e7c8a;
+  --color-marine-400: #16a2b4;
+
+  --font-display: var(--font-archivo), "Arial Narrow", system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+  --shadow-lift: 0 1px 2px rgb(6 8 11 / 0.06), 0 12px 32px -8px rgb(6 8 11 / 0.18);
+  --shadow-lift-lg: 0 2px 4px rgb(6 8 11 / 0.08), 0 28px 60px -12px rgb(6 8 11 / 0.28);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  :root {
+    --header-h: 4.5rem;
+    color-scheme: light;
+  }
+
+  * {
+    border-color: var(--color-ink-200);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, on-brand focus ring everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-400);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-accent-500);
+    color: white;
+  }
+
+  /* Reserve space so anchor links don't hide under the sticky header. */
+  [id] {
+    scroll-margin-top: calc(var(--header-h) + 1.5rem);
+  }
+}
+
+@layer components {
+  .display-xl {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    font-size: clamp(2.75rem, 7.5vw, 6.5rem);
+  }
+
+  .display-lg {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.028em;
+    font-size: clamp(2rem, 4.6vw, 3.75rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.6875rem;
+  }
+
+  .shell {
+    width: 100%;
+    max-width: 84rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .shell {
+      max-width: 90rem;
+    }
+  }
+
+  /* Thin, unobtrusive scroller used by every horizontal carousel. */
+  .rail {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rail > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+}
+
+/* Honour the OS-level motion preference: kill transforms, keep opacity. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
