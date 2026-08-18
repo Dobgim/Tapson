@@ -36,7 +36,7 @@ export function Logo({
             tone === "light" ? "text-white" : "text-ink-900",
           )}
         >
-          Riva
+          Repossessed Rides
         </span>
         <span
           className={cn(
@@ -53,7 +53,7 @@ export function Logo({
   if (!href) return mark;
 
   return (
-    <Link href={href} aria-label="RIVA Motorsports — home">
+    <Link href={href} aria-label="Repossessed Rides — home">
       {mark}
     </Link>
   );

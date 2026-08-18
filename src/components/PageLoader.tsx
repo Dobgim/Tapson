@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { EASE } from "./motion/Reveal";
 
-const SESSION_KEY = "riva:intro-played";
+const SESSION_KEY = "repossessed-rides:intro-played";
 
 /**
  * First-visit intro: the mark draws in, then two panels split away to reveal
@@ -107,7 +107,7 @@ export function PageLoader() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.5, ease: EASE }}
             >
-              Riva Motorsports
+              Repossessed Rides
             </motion.p>
           </motion.div>
         </motion.div>

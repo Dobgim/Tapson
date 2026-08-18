@@ -11,7 +11,7 @@ import { ButtonLink, SlideArrow } from "@/components/ui/Button";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "About RIVA Motorsports",
+  title: "About Repossessed Rides",
   description:
     "Two decades selling and servicing powersports and marine in South Florida. Three stores, nine departments, factory-certified technicians and no commission-driven sales floor.",
   alternates: { canonical: "/about" },
@@ -69,7 +69,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
               <Image
                 src="/images/dealership/showroom.webp"
-                alt="Stylised artwork of the RIVA Motorsports showroom"
+                alt="Stylised artwork of the Repossessed Rides showroom"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -82,7 +82,7 @@ export default function AboutPage() {
               <h2 className="display-lg text-ink-900">A dealer built by people who ride</h2>
               <div className="mt-5 space-y-4 text-base leading-relaxed text-ink-600">
                 <p>
-                  RIVA started because the founders were tired of buying machines from people who
+                  REPOSSESSED RIDES started because the founders were tired of buying machines from people who
                   didn't use them. Everyone here rides, launches or drives something we sell, which
                   turns out to matter enormously when you're being asked which unit is right.
                 </p>

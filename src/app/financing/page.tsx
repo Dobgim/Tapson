@@ -11,7 +11,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "Powersports Financing",
   description:
-    "Apply for motorcycle, ATV, UTV, watercraft and boat financing at RIVA Motorsports. Multiple lenders, terms to 84 months, approvals across the credit spectrum.",
+    "Apply for motorcycle, ATV, UTV, watercraft and boat financing at Repossessed Rides. Multiple lenders, terms to 84 months, approvals across the credit spectrum.",
   alternates: { canonical: "/financing" },
 };
 

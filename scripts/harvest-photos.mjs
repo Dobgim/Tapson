@@ -12,7 +12,7 @@ import { mkdir, writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
 
 const CACHE = ".photo-cache";
-const UA = "RivaNextGenDevBuild/1.0 (local portfolio build; contact dobgimajoshua52@gmail.com)";
+const UA = "RepossessedRidesDevBuild/1.0 (local portfolio build; contact dobgimajoshua52@gmail.com)";
 
 /** Licences that permit commercial reuse. Everything else is discarded. */
 const OK_LICENCE = /^(cc0|cc[ -]by([ -]sa)?([ -][0-9.]+)?|public domain|pd([ -]|$)|attribution)/i;

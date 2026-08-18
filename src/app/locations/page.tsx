@@ -9,7 +9,7 @@ import { locations, site } from "@/data/site";
 export const metadata: Metadata = {
   title: "Locations & Hours",
   description:
-    "RIVA Motorsports store locations, opening hours, phone numbers and directions for Miami, Key Largo and Pompano Beach, Florida.",
+    "Repossessed Rides store locations, opening hours, phone numbers and directions for Miami, Key Largo and Pompano Beach, Florida.",
   alternates: { canonical: "/locations" },
 };
 

@@ -11,7 +11,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "Parts & Accessories",
   description:
-    "OEM parts, accessories, helmets and riding gear for Yamaha, Suzuki, Polaris, Can-Am, Sea-Doo, CFMOTO and more at RIVA Motorsports in South Florida.",
+    "OEM parts, accessories, helmets and riding gear for Yamaha, Suzuki, Polaris, Can-Am, Sea-Doo, CFMOTO and more at Repossessed Rides in South Florida.",
   alternates: { canonical: "/parts" },
 };
 

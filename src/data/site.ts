@@ -5,15 +5,15 @@
  */
 
 export const site = {
-  name: "RIVA Motorsports",
-  shortName: "RIVA",
+  name: "Repossessed Rides",
+  shortName: "Repossessed Rides",
   tagline: "South Florida's Powersports & Marine Superstore",
   description:
     "Motorcycles, ATVs, side-by-sides, watercraft, boats and golf carts from Yamaha, Suzuki, Polaris, Can-Am, Sea-Doo and CFMOTO. Sales, service, parts and financing across South Florida.",
-  url: "https://riva-nextgen.example.com",
-  email: "sales@rivamiami.com",
-  phone: "(305) 258-2000",
-  phoneHref: "tel:+13052582000",
+  url: "https://repossessed-rides.example.com",
+  email: "sales@repossessedrides.example.com",
+  phone: "(305) 555-0142",
+  phoneHref: "tel:+13055550142",
   social: {
     facebook: "https://www.facebook.com/",
     instagram: "https://www.instagram.com/",
@@ -132,14 +132,14 @@ export type Location = {
 export const locations: Location[] = [
   {
     id: "miami",
-    name: "RIVA Motorsports Miami",
+    name: "Repossessed Rides Miami",
     city: "Miami",
-    street: "11995 SW 222nd St",
+    street: "8420 Palm Trail",
     region: "FL",
     postalCode: "33170",
-    phone: "(305) 258-2000",
-    phoneHref: "tel:+13052582000",
-    email: "sales@rivamiami.com",
+    phone: "(305) 555-0142",
+    phoneHref: "tel:+13055550142",
+    email: "sales@repossessedrides.example.com",
     geo: { lat: 25.5271, lng: -80.3931 },
     hours: [
       { days: "Monday – Friday", open: "9:00 AM – 6:00 PM" },
@@ -147,18 +147,18 @@ export const locations: Location[] = [
       { days: "Sunday", open: "Closed" },
     ],
     specialties: ["Motorcycles", "ATVs & UTVs", "Watercraft", "Golf Carts"],
-    mapQuery: "11995 SW 222nd St, Miami, FL 33170",
+    mapQuery: "Miami, FL 33170",
   },
   {
     id: "key-largo",
-    name: "RIVA Motorsports & Marine of the Keys",
+    name: "Repossessed Rides Marine of the Keys",
     city: "Key Largo",
-    street: "103400 Overseas Hwy",
+    street: "215 Coral Point Way",
     region: "FL",
     postalCode: "33037",
-    phone: "(305) 453-7000",
-    phoneHref: "tel:+13054537000",
-    email: "keys@rivamiami.com",
+    phone: "(305) 555-0178",
+    phoneHref: "tel:+13055550178",
+    email: "keys@repossessedrides.example.com",
     geo: { lat: 25.1224, lng: -80.4128 },
     hours: [
       { days: "Monday – Friday", open: "9:00 AM – 6:00 PM" },
@@ -166,18 +166,18 @@ export const locations: Location[] = [
       { days: "Sunday", open: "Closed" },
     ],
     specialties: ["Boats", "Outboards", "Watercraft", "Marine Service"],
-    mapQuery: "103400 Overseas Hwy, Key Largo, FL 33037",
+    mapQuery: "Key Largo, FL 33037",
   },
   {
     id: "pompano",
-    name: "RIVA Motorsports Pompano Beach",
+    name: "Repossessed Rides Pompano Beach",
     city: "Pompano Beach",
-    street: "1560 N Federal Hwy",
+    street: "640 Marina Vista Blvd",
     region: "FL",
     postalCode: "33062",
-    phone: "(954) 785-4820",
-    phoneHref: "tel:+19547854820",
-    email: "pompano@rivamiami.com",
+    phone: "(954) 555-0116",
+    phoneHref: "tel:+19545550116",
+    email: "pompano@repossessedrides.example.com",
     geo: { lat: 26.2504, lng: -80.1187 },
     hours: [
       { days: "Monday – Friday", open: "9:00 AM – 6:00 PM" },
@@ -185,7 +185,7 @@ export const locations: Location[] = [
       { days: "Sunday", open: "Closed" },
     ],
     specialties: ["Watercraft", "Side-by-Sides", "Scooters", "Parts"],
-    mapQuery: "1560 N Federal Hwy, Pompano Beach, FL 33062",
+    mapQuery: "Pompano Beach, FL 33062",
   },
 ];
 
@@ -215,7 +215,7 @@ export const footerColumns: { heading: string; links: NavLink[] }[] = [
   {
     heading: "Company",
     links: [
-      { label: "About RIVA", href: "/about" },
+      { label: "About Us", href: "/about" },
       { label: "Locations & Hours", href: "/locations" },
       { label: "Contact Us", href: "/contact" },
       { label: "Careers", href: "/about#careers" },

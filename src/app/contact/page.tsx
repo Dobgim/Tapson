@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Call, email or message RIVA Motorsports. Sales, service, parts and financing enquiries across our Miami, Key Largo and Pompano Beach stores.",
+    "Call, email or message Repossessed Rides. Sales, service, parts and financing enquiries across our Miami, Key Largo and Pompano Beach stores.",
   alternates: { canonical: "/contact" },
 };
 

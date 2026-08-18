@@ -28,7 +28,7 @@ export async function generateMetadata({
   if (!product) return { title: "Unit not found" };
 
   const title = `${product.title} — ${formatPrice(product.price)}`;
-  const description = `${product.condition} ${product.title} in stock at RIVA Motorsports. ${product.description.slice(0, 130)}...`;
+  const description = `${product.condition} ${product.title} in stock at Repossessed Rides. ${product.description.slice(0, 130)}...`;
 
   return {
     title,

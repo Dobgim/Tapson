@@ -13,7 +13,7 @@ import { formatPrice } from "@/lib/finance";
 export const metadata: Metadata = {
   title: "Manager's Specials",
   description:
-    "Discounted new and pre-owned powersports units at RIVA Motorsports. Factory rebates stacked with dealer discounts across Miami, Key Largo and Pompano Beach.",
+    "Discounted new and pre-owned powersports units at Repossessed Rides. Factory rebates stacked with dealer discounts across Miami, Key Largo and Pompano Beach.",
   alternates: { canonical: "/specials" },
 };
 

@@ -46,7 +46,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" wid
         fill="#ffffff" transform="translate(0 0)"/>
 
   <text x="170" y="102" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="bold"
-        letter-spacing="-1" fill="#ffffff">RIVA</text>
+        letter-spacing="-1" fill="#ffffff">REPOSSESSED RIDES</text>
   <text x="172" y="130" font-family="Arial, Helvetica, sans-serif" font-size="15"
         letter-spacing="7.5" fill="#ffffff" opacity="0.5">MOTORSPORTS</text>
 

@@ -335,7 +335,7 @@ for (const [slug, meta] of Object.entries(categoryMeta)) {
 }
 
 // Dealership / editorial imagery
-write("dealership/showroom.svg", poster({ w: 1600, h: 1100, hue: "#d81f18", subject: "motorcycle", variant: 1, label: "Riva" }));
+write("dealership/showroom.svg", poster({ w: 1600, h: 1100, hue: "#d81f18", subject: "motorcycle", variant: 1, label: "Repossessed Rides" }));
 write("dealership/service.svg", poster({ w: 1400, h: 1000, hue: "#41505f", subject: "atv", variant: 2, label: "Service" }));
 write("dealership/marine.svg", poster({ w: 1400, h: 1000, hue: "#0e7c8a", subject: "boat", variant: 0, water: true, label: "Marine" }));
 write("dealership/finance.svg", poster({ w: 1400, h: 1000, hue: "#15557f", subject: "utv", variant: 1, label: "Finance" }));

@@ -18,7 +18,7 @@ export function About() {
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink-900 shadow-lift-lg">
             <Image
               src="/images/dealership/showroom.webp"
-              alt="Stylised artwork of the RIVA Motorsports showroom floor"
+              alt="Stylised artwork of the Repossessed Rides showroom floor"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
@@ -48,7 +48,7 @@ export function About() {
 
         <div>
           <Reveal>
-            <p className="eyebrow mb-3 text-accent-500">About RIVA</p>
+            <p className="eyebrow mb-3 text-accent-500">About Us</p>
             <h2 id="about-heading" className="display-lg text-ink-900">
               Two decades of getting South Florida out on the water and into the dirt
             </h2>

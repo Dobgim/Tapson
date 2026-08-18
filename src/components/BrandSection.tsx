@@ -38,7 +38,7 @@ export function BrandSection() {
               >
                 <Image
                   src={brand.image}
-                  alt={`${brand.name} models at RIVA Motorsports`}
+                  alt={`${brand.name} models at Repossessed Rides`}
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   className="object-cover transition-transform duration-[900ms] ease-[var(--ease-out-expo)] group-hover/tile:scale-[1.07]"
@@ -85,7 +85,7 @@ export function BrandSection() {
             >
               <Image
                 src="/images/brands/all-inventory.webp"
-                alt="Browse the full RIVA Motorsports inventory"
+                alt="Browse the full Repossessed Rides inventory"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-transform duration-[900ms] ease-[var(--ease-out-expo)] group-hover/tile:scale-[1.07]"

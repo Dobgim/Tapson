@@ -21,7 +21,7 @@ export async function generateMetadata({
 
   const title = category ? `${category.name} for sale in South Florida` : "Inventory";
   const description = category
-    ? `${category.blurb} Browse ${category.name.toLowerCase()} in stock at RIVA Motorsports across Miami, Key Largo and Pompano Beach.`
+    ? `${category.blurb} Browse ${category.name.toLowerCase()} in stock at Repossessed Rides across Miami, Key Largo and Pompano Beach.`
     : "Filter every new and pre-owned unit in stock across our three South Florida stores by make, model, price, condition and location.";
 
   return {

@@ -9,7 +9,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "Value My Trade",
   description:
-    "Get a real appraisal on your motorcycle, ATV, UTV, watercraft or boat. RIVA Motorsports appraises anything with an engine, whether or not you buy from us.",
+    "Get a real appraisal on your motorcycle, ATV, UTV, watercraft or boat. Repossessed Rides appraises anything with an engine, whether or not you buy from us.",
   alternates: { canonical: "/trade-in" },
 };
 

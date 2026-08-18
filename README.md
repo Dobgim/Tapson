@@ -1,4 +1,4 @@
-# RIVA Motorsports — Next Generation
+# Repossessed Rides — Next Generation
 
 A rebuilt, modernised powersports dealership site: Next.js App Router, React 19,
 TypeScript, Tailwind CSS v4, Framer Motion and Lucide icons.
