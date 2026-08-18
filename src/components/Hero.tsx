@@ -13,10 +13,10 @@ const SLIDE_MS = 6500;
 const slides = [
   {
     image: "/images/hero/hero-1.webp",
-    alt: "Stylised poster of a sport motorcycle against a South Florida sunset",
+    alt: "Stylised poster of a sport motorcycle against a Vermont sunset",
     eyebrow: "2025 arrivals are landing",
     title: ["Find your next", "adventure"],
-    body: "Three South Florida stores. Over 400 units in stock across motorcycles, ATVs, side-by-sides, watercraft and boats.",
+    body: "Burlington, Vermont. Hundreds of units in stock across motorcycles, ATVs, side-by-sides, watercraft and boats.",
     primary: { label: "Shop inventory", href: "/inventory" },
     secondary: { label: "View specials", href: "/specials" },
   },
@@ -43,7 +43,7 @@ const slides = [
     alt: "Stylised poster of a centre console boat offshore",
     eyebrow: "Marine department",
     title: ["Offshore", "ready"],
-    body: "Boats, outboards and full marine service from our Key Largo store — rigging, repowers and storage prep.",
+    body: "Boats, outboards and full marine service in house — rigging, repowers and winter storage prep.",
     primary: { label: "Shop boats", href: "/inventory?category=boats" },
     secondary: { label: "Marine service", href: "/service" },
   },

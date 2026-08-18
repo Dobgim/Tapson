@@ -56,7 +56,7 @@ export function ContactForm({ defaultTopic = "sales" }: { defaultTopic?: string 
           type="tel"
           required
           autoComplete="tel"
-          placeholder="(305) 555-0123"
+          placeholder="(802) 555-0123"
           value={form.values.phone}
           error={form.errors.phone}
           onChange={(e) => form.set("phone")(e.target.value)}

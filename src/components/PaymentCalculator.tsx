@@ -80,7 +80,7 @@ export function PaymentCalculator({ initialPrice = 15000 }: { initialPrice?: num
 
   return (
     <div className="grid gap-8 rounded-2xl border border-ink-200 bg-white p-6 shadow-lift sm:p-8 lg:grid-cols-5 lg:gap-10">
-      <div className="space-y-6 lg:col-span-3">
+      <div className="min-w-0 space-y-6 lg:col-span-3">
         <Slider
           label="Vehicle price"
           value={price}
@@ -140,7 +140,7 @@ export function PaymentCalculator({ initialPrice = 15000 }: { initialPrice?: num
         </fieldset>
       </div>
 
-      <div className="flex flex-col justify-between rounded-2xl bg-ink-950 p-7 text-white lg:col-span-2">
+      <div className="min-w-0 flex flex-col justify-between rounded-2xl bg-ink-950 p-7 text-white lg:col-span-2">
         <div>
           <p className="eyebrow text-accent-400">Estimated payment</p>
           <p className="mt-3 flex items-baseline gap-1">

@@ -26,7 +26,7 @@ export function FinancingCta() {
       />
 
       <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-6">
+        <div className="min-w-0 lg:col-span-6">
           <Reveal>
             <p className="eyebrow mb-3 text-accent-400">Financing</p>
             <h2 className="display-lg text-white">
@@ -63,7 +63,7 @@ export function FinancingCta() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.15} direction="left" className="lg:col-span-6">
+        <Reveal delay={0.15} direction="left" className="min-w-0 lg:col-span-6">
           <div className="rounded-2xl border border-white/12 bg-white/5 p-7 backdrop-blur-sm sm:p-9">
             <p className="eyebrow text-white/45">What a typical deal looks like</p>
             <div className="mt-6 space-y-5">

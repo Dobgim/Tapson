@@ -78,7 +78,7 @@ export function BrandSection() {
           ))}
 
           {/* Closing tile mirrors the reference grid's "All Inventory" cell. */}
-          <StaggerItem className="col-span-2">
+          <StaggerItem className="min-w-0 col-span-2">
             <Link
               href="/inventory"
               className="group/tile relative block aspect-3/2 overflow-hidden rounded-lg bg-ink-900 sm:aspect-8/5 lg:aspect-3/2"

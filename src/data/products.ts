@@ -45,7 +45,7 @@ const seeds: ProductSeed[] = [
     condition: "New",
     price: 11799,
     msrp: 12499,
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-24901",
     color: "Matte Raven Black",
     description:
@@ -81,7 +81,7 @@ const seeds: ProductSeed[] = [
     condition: "New",
     price: 20399,
     msrp: 21799,
-    locationId: "pompano",
+    locationId: "burlington",
     stockNumber: "RM-24488",
     color: "Manta Green",
     description:
@@ -116,7 +116,7 @@ const seeds: ProductSeed[] = [
     category: "side-by-sides",
     condition: "New",
     price: 39999,
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-24102",
     color: "Carbon Black / Fiery Red",
     description:
@@ -151,7 +151,7 @@ const seeds: ProductSeed[] = [
     condition: "New",
     price: 8799,
     msrp: 9299,
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-24610",
     color: "Sage Green",
     description:
@@ -183,7 +183,7 @@ const seeds: ProductSeed[] = [
     category: "watercraft",
     condition: "New",
     price: 14299,
-    locationId: "key-largo",
+    locationId: "burlington",
     stockNumber: "RM-24771",
     color: "Cyan / Black",
     description:
@@ -214,7 +214,7 @@ const seeds: ProductSeed[] = [
     category: "motorcycles",
     condition: "New",
     price: 12849,
-    locationId: "pompano",
+    locationId: "burlington",
     stockNumber: "RM-24330",
     color: "Metallic Triton Blue",
     description:
@@ -245,7 +245,7 @@ const seeds: ProductSeed[] = [
     condition: "New",
     price: 15499,
     msrp: 16799,
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-24215",
     color: "Nebula Black",
     description:
@@ -277,7 +277,7 @@ const seeds: ProductSeed[] = [
     condition: "New",
     price: 89999,
     msrp: 94500,
-    locationId: "key-largo",
+    locationId: "burlington",
     stockNumber: "RM-24009",
     color: "Torch Red",
     description:
@@ -311,7 +311,7 @@ const seeds: ProductSeed[] = [
     category: "watercraft",
     condition: "New",
     price: 9799,
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-24552",
     color: "Dragon Red / Manta Green",
     description:
@@ -343,7 +343,7 @@ const seeds: ProductSeed[] = [
     condition: "Pre-Owned",
     price: 27995,
     usage: { value: 412, unit: "hrs" },
-    locationId: "pompano",
+    locationId: "burlington",
     stockNumber: "RM-23880",
     color: "Matte Navy",
     description:
@@ -373,7 +373,7 @@ const seeds: ProductSeed[] = [
     category: "dirt-bikes",
     condition: "New",
     price: 8899,
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-24444",
     color: "Team Yamaha Blue",
     description:
@@ -405,7 +405,7 @@ const seeds: ProductSeed[] = [
     condition: "New",
     price: 13899,
     msrp: 14899,
-    locationId: "key-largo",
+    locationId: "burlington",
     stockNumber: "RM-24660",
     color: "Patriot Blue",
     description:
@@ -436,11 +436,11 @@ const seeds: ProductSeed[] = [
     category: "generators",
     condition: "New",
     price: 1399,
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-24880",
     color: "Red",
     description:
-      "The generator every South Florida household should already own. 2,200 watts of clean inverter power, 48 lb, and quiet enough to run on a patio through a storm week.",
+      "The generator every Vermont household should already own. 2,200 watts of clean inverter power, 48 lb, and quiet enough to run on a porch through an ice-storm outage.",
     specifications: [
       { label: "Output", value: "2,200W max / 1,800W rated" },
       { label: "Engine", value: "Honda GXR120 121cc" },
@@ -465,7 +465,7 @@ const seeds: ProductSeed[] = [
     category: "scooters",
     condition: "New",
     price: 6299,
-    locationId: "pompano",
+    locationId: "burlington",
     stockNumber: "RM-24703",
     color: "Matte Gray",
     description:
@@ -497,7 +497,7 @@ const seeds: ProductSeed[] = [
     condition: "Pre-Owned",
     price: 9495,
     usage: { value: 3120, unit: "mi" },
-    locationId: "pompano",
+    locationId: "burlington",
     stockNumber: "RM-23744",
     color: "Black Smoke",
     description:
@@ -529,7 +529,7 @@ const seeds: ProductSeed[] = [
     category: "atvs",
     condition: "New",
     price: 12299,
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-24318",
     color: "Wildland Camo",
     description:
@@ -560,7 +560,7 @@ const seeds: ProductSeed[] = [
     condition: "New",
     price: 8499,
     msrp: 8999,
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-24377",
     color: "Lime Green / Ebony",
     description:
@@ -591,7 +591,7 @@ const seeds: ProductSeed[] = [
     category: "atvs",
     condition: "New",
     price: 10599,
-    locationId: "key-largo",
+    locationId: "burlington",
     stockNumber: "RM-24525",
     color: "Solid Special White",
     description:
@@ -622,7 +622,7 @@ const seeds: ProductSeed[] = [
     condition: "Pre-Owned",
     price: 32900,
     usage: { value: 96, unit: "hrs" },
-    locationId: "key-largo",
+    locationId: "burlington",
     stockNumber: "RM-23610",
     color: "Coastal Blue",
     description:
@@ -652,7 +652,7 @@ const seeds: ProductSeed[] = [
     category: "side-by-sides",
     condition: "New",
     price: 18999,
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-24240",
     color: "Polaris Pursuit Camo",
     description:
@@ -681,7 +681,7 @@ const seeds: ProductSeed[] = [
     category: "motorcycles",
     condition: "New",
     price: 10799,
-    locationId: "pompano",
+    locationId: "burlington",
     stockNumber: "RM-24401",
     color: "Shadow Gray",
     description:
@@ -713,7 +713,7 @@ const seeds: ProductSeed[] = [
     condition: "Pre-Owned",
     price: 13495,
     usage: { value: 188, unit: "hrs" },
-    locationId: "pompano",
+    locationId: "burlington",
     stockNumber: "RM-23955",
     color: "Velocity Gray",
     description:
@@ -744,7 +744,7 @@ const seeds: ProductSeed[] = [
     category: "dirt-bikes",
     condition: "New",
     price: 3849,
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-24812",
     color: "Extreme Red",
     description:
@@ -774,7 +774,7 @@ const seeds: ProductSeed[] = [
     condition: "Pre-Owned",
     price: 5299,
     usage: { value: 2740, unit: "mi" },
-    locationId: "miami",
+    locationId: "burlington",
     stockNumber: "RM-23820",
     color: "Metallic Matte Black",
     description:
@@ -804,7 +804,7 @@ const seeds: ProductSeed[] = [
     condition: "Pre-Owned",
     price: 8495,
     usage: { value: 310, unit: "hrs" },
-    locationId: "key-largo",
+    locationId: "burlington",
     stockNumber: "RM-23705",
     color: "Sandstone",
     description:
@@ -833,7 +833,7 @@ const seeds: ProductSeed[] = [
     condition: "New",
     price: 1299,
     msrp: 1449,
-    locationId: "pompano",
+    locationId: "burlington",
     stockNumber: "RM-24845",
     color: "Blue",
     description:

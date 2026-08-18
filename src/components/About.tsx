@@ -4,7 +4,7 @@ import { Reveal } from "./motion/Reveal";
 import { ButtonLink, SlideArrow } from "./ui/Button";
 
 const stats = [
-  { value: 20, suffix: "+", label: "Years in South Florida" },
+  { value: 20, suffix: "+", label: "Years in business" },
   { value: 10000, suffix: "+", label: "Rides delivered" },
   { value: 3, suffix: "", label: "Stores, one inventory" },
   { value: 5, suffix: "-star", label: "Average service rating" },
@@ -50,17 +50,16 @@ export function About() {
           <Reveal>
             <p className="eyebrow mb-3 text-accent-500">About Us</p>
             <h2 id="about-heading" className="display-lg text-ink-900">
-              Two decades of getting South Florida out on the water and into the dirt
+              Two decades of getting Vermont out on the water and into the dirt
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-ink-600">
               <p>
-                We started as a single store selling watercraft and outboards. Twenty years later
-                we're three stores, nine departments and a shared inventory that moves between
-                Miami, Key Largo and Pompano Beach so the unit you want is never at the wrong
-                address for long.
+                We started selling watercraft and outboards out of one building on Intervale Ave.
+                Twenty years later it's the same address, with nine departments and enough floor
+                and yard space to hold real depth through the season.
               </p>
               <p>
                 What hasn't changed is the way the place runs. The same technicians have been in the

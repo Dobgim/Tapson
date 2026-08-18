@@ -1,9 +1,14 @@
 import Link from "next/link";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { ButtonLink, SlideArrow } from "@/components/ui/Button";
 import { categories } from "@/data/categories";
 
 export default function NotFound() {
   return (
+    <>
+      <Header />
+      <main id="main">
     <section className="relative isolate flex min-h-[70svh] items-center overflow-hidden bg-ink-950 py-24 text-white">
       <div className="shell max-w-2xl">
         <p className="font-display text-[7rem] font-extrabold leading-none tracking-tighter text-accent-500 sm:text-[10rem]">
@@ -42,5 +47,8 @@ export default function NotFound() {
         </div>
       </div>
     </section>
+      </main>
+      <Footer />
+    </>
   );
 }

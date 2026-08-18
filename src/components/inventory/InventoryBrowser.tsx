@@ -63,13 +63,13 @@ export function InventoryBrowser({ initial }: { initial: Filters }) {
     <section className="bg-ink-50 py-12 lg:py-16">
       <div className="shell lg:grid lg:grid-cols-12 lg:gap-10">
         {/* Desktop rail */}
-        <aside className="hidden lg:col-span-3 lg:block">
+        <aside className="min-w-0 hidden lg:col-span-3 lg:block">
           <div className="sticky top-[calc(var(--header-h)+1.5rem)] max-h-[calc(100svh-var(--header-h)-3rem)] overflow-y-auto rounded-2xl border border-ink-200 bg-white p-6">
             {panel}
           </div>
         </aside>
 
-        <div className="lg:col-span-9">
+        <div className="min-w-0 lg:col-span-9">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
             <p className="text-sm text-ink-600">
               <span className="font-display text-lg font-extrabold text-ink-900">{results.length}</span>{" "}

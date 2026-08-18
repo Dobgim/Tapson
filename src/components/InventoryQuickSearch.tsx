@@ -71,7 +71,7 @@ export function InventoryQuickSearch() {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
-              <div className="lg:col-span-1">
+              <div className="min-w-0 lg:col-span-1">
                 <label htmlFor="qs-category" className="sr-only">
                   Category
                 </label>
@@ -91,7 +91,7 @@ export function InventoryQuickSearch() {
                 </select>
               </div>
 
-              <div className="lg:col-span-1">
+              <div className="min-w-0 lg:col-span-1">
                 <label htmlFor="qs-make" className="sr-only">
                   Make
                 </label>
@@ -111,7 +111,7 @@ export function InventoryQuickSearch() {
                 </select>
               </div>
 
-              <div className="lg:col-span-1">
+              <div className="min-w-0 lg:col-span-1">
                 <label htmlFor="qs-year" className="sr-only">
                   Year
                 </label>
@@ -131,7 +131,7 @@ export function InventoryQuickSearch() {
                 </select>
               </div>
 
-              <div className="lg:col-span-1">
+              <div className="min-w-0 lg:col-span-1">
                 <label htmlFor="qs-condition" className="sr-only">
                   Condition
                 </label>
@@ -148,7 +148,7 @@ export function InventoryQuickSearch() {
                 </select>
               </div>
 
-              <div className="lg:col-span-1">
+              <div className="min-w-0 lg:col-span-1">
                 <label htmlFor="qs-price" className="sr-only">
                   Maximum price
                 </label>
@@ -168,7 +168,7 @@ export function InventoryQuickSearch() {
                 </select>
               </div>
 
-              <Button type="submit" size="lg" className="h-12 w-full lg:col-span-1">
+              <Button type="submit" size="lg" className="min-w-0 h-12 w-full lg:col-span-1">
                 <Search className="h-4 w-4" aria-hidden="true" />
                 Search
               </Button>

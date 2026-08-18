@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { motion, useReducedMotion, type HTMLMotionProps, type Variants } from "framer-motion";
-import type { ComponentType, ElementType, ReactNode } from "react";
+import { useEffect, useState, type ComponentType, type ElementType, type ReactNode } from "react";
 
 export const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -49,6 +49,25 @@ type RevealProps = {
 };
 
 /**
+ * Horizontal reveals start the element offset to the right, which is real
+ * layout overflow until it animates in — on a phone that turns into a
+ * sideways scroll on every section still below the fold. Enable the sideways
+ * slide only from `lg` up, where there is room for it. Starting false means
+ * the server render and first paint are always the safe, offset-free variant.
+ */
+function useWideViewport() {
+  const [wide, setWide] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const sync = () => setWide(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+  return wide;
+}
+
+/**
  * Scroll-triggered entrance. Under `prefers-reduced-motion` it degrades to a
  * plain opacity fade with no transform, per the WCAG motion guidance.
  */
@@ -63,8 +82,11 @@ export function Reveal({
   once = true,
 }: RevealProps) {
   const reduced = useReducedMotion();
+  const wide = useWideViewport();
   const MotionTag = motionTag(as);
-  const { x, y } = reduced ? offset.none : offset[direction];
+  const horizontal = direction === "left" || direction === "right";
+  const effective: Direction = horizontal && !wide ? "up" : direction;
+  const { x, y } = reduced ? offset.none : offset[effective];
 
   return (
     <MotionTag
@@ -122,8 +144,11 @@ export function StaggerItem({
   as?: ElementType;
 }) {
   const reduced = useReducedMotion();
+  const wide = useWideViewport();
   const MotionTag = motionTag(as);
-  const { x, y } = reduced ? offset.none : offset[direction];
+  const horizontal = direction === "left" || direction === "right";
+  const effective: Direction = horizontal && !wide ? "up" : direction;
+  const { x, y } = reduced ? offset.none : offset[effective];
 
   const variants: Variants = {
     hidden: { opacity: 0, x, y },

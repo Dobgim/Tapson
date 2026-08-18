@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { createLead } from "@/lib/admin/store";
 
 /**
  * Lead intake endpoint. Today it validates and echoes a reference number; the
@@ -53,10 +54,27 @@ export async function POST(request: Request) {
     );
   }
 
-  const reference = `RV-${Date.now().toString(36).toUpperCase().slice(-6)}`;
+  const reference = `RR-${Date.now().toString(36).toUpperCase().slice(-6)}`;
+  const text = (key: string) => (typeof fields[key] === "string" ? (fields[key] as string) : "");
 
-  // Replace with a real persistence/notification call.
-  console.info(`[lead:${kind}] ${reference}`, fields);
+  // Persists to Supabase so submissions surface in the dealer console. A
+  // storage failure must not lose the customer's enquiry silently.
+  const saved = await createLead({
+    reference,
+    kind,
+    name: text("name") || text("firstName") || "Website visitor",
+    email: emailValue,
+    phone: text("phone"),
+    message: text("message") || text("comments") || text("details") || "",
+  });
+
+  if (!saved) {
+    console.error(`[lead:${kind}] ${reference} could not be stored`);
+    return NextResponse.json(
+      { ok: false, error: "We couldn't save that just now. Please call us instead." },
+      { status: 503 },
+    );
+  }
 
   return NextResponse.json({ ok: true, reference });
 }

@@ -22,3 +22,6 @@ Thumbs.db
 npm-debug.log*
 yarn-error.log*
 .vercel
+
+# supabase CLI local state
+supabase/.temp/

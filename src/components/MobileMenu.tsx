@@ -178,7 +178,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                 <div className="flex items-start gap-3 text-ink-700">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent-500" aria-hidden="true" />
                   <span>
-                    {locations.length} South Florida stores —{" "}
+                    {locations.length === 1 ? "Burlington, VT" : `${locations.length} stores`} —{" "}
                     <Link href="/locations" onClick={onClose} className="font-semibold text-accent-500 underline-offset-4 hover:underline">
                       see all
                     </Link>

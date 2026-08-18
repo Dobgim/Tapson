@@ -21,7 +21,7 @@ export function ContactSection({
   return (
     <section className="bg-ink-50 py-20 lg:py-28" aria-labelledby="contact-heading">
       <div className="shell grid gap-10 lg:grid-cols-12 lg:gap-14">
-        <Reveal className="lg:col-span-5">
+        <Reveal className="min-w-0 lg:col-span-5">
           <p className="eyebrow mb-3 text-accent-500">Get in touch</p>
           <h2 id="contact-heading" className="display-lg text-ink-900">
             Talk to a human
@@ -33,24 +33,24 @@ export function ContactSection({
 
           <ul className="mt-8 space-y-5">
             <li>
-              <a href={site.phoneHref} className="group/row flex items-start gap-4">
+              <a href={site.phoneHref} className="group/row flex min-w-0 items-start gap-4">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-accent-500 shadow-sm transition-colors duration-300 group-hover/row:bg-accent-500 group-hover/row:text-white">
                   <Phone className="h-4 w-4" aria-hidden="true" />
                 </span>
-                <span>
+                <span className="min-w-0">
                   <span className="block text-xs font-semibold uppercase tracking-wide text-ink-400">Phone</span>
                   <span className="block text-base font-semibold text-ink-900">{site.phone}</span>
                 </span>
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="group/row flex items-start gap-4">
+              <a href={`mailto:${site.email}`} className="group/row flex min-w-0 items-start gap-4">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-accent-500 shadow-sm transition-colors duration-300 group-hover/row:bg-accent-500 group-hover/row:text-white">
                   <Mail className="h-4 w-4" aria-hidden="true" />
                 </span>
-                <span>
+                <span className="min-w-0">
                   <span className="block text-xs font-semibold uppercase tracking-wide text-ink-400">Email</span>
-                  <span className="block text-base font-semibold text-ink-900">{site.email}</span>
+                  <span className="block break-all text-base font-semibold text-ink-900">{site.email}</span>
                 </span>
               </a>
             </li>
@@ -111,7 +111,7 @@ export function ContactSection({
           )}
         </Reveal>
 
-        <Reveal delay={0.12} direction="left" className="lg:col-span-7">
+        <Reveal delay={0.12} direction="left" className="min-w-0 lg:col-span-7">
           <div className="rounded-2xl border border-ink-200 bg-white p-6 shadow-lift sm:p-9">
             <h3 className="font-display text-xl font-extrabold uppercase tracking-tight text-ink-900">
               Send us a message

@@ -14,10 +14,10 @@ export function Footer() {
   return (
     <footer className="bg-ink-950 text-white">
       <div className="shell grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12 lg:gap-8 lg:py-20">
-        <div className="lg:col-span-4">
+        <div className="min-w-0 lg:col-span-4">
           <Logo tone="light" />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/55">
-            Three South Florida stores selling and servicing motorcycles, ATVs, side-by-sides,
+            A Burlington, Vermont store selling and servicing motorcycles, ATVs, side-by-sides,
             watercraft, boats and golf carts. Factory-certified techs, in-house financing and a
             parts counter that actually stocks what you need.
           </p>
@@ -60,7 +60,7 @@ export function Footer() {
         </div>
 
         {footerColumns.map((col) => (
-          <nav key={col.heading} aria-label={col.heading} className="lg:col-span-2">
+          <nav key={col.heading} aria-label={col.heading} className="min-w-0 lg:col-span-2">
             <p className="eyebrow mb-5 text-accent-400">{col.heading}</p>
             <ul className="space-y-2.5">
               {col.links.map((link) => (
@@ -77,7 +77,7 @@ export function Footer() {
           </nav>
         ))}
 
-        <div className="md:col-span-2 lg:col-span-2">
+        <div className="min-w-0 md:col-span-2 lg:col-span-2">
           <p className="eyebrow mb-5 text-accent-400">Stay in the loop</p>
           <p className="mb-4 text-sm text-white/55">
             New arrivals, factory rebates and event invites. No more than twice a month.

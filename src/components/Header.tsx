@@ -63,7 +63,7 @@ export function Header() {
       {/* Utility bar — collapses away as soon as you scroll. */}
       <div
         className={cn(
-          "relative z-50 hidden overflow-hidden bg-ink-950 text-white transition-[height,opacity] duration-500 ease-[var(--ease-out-expo)] lg:block",
+          "relative z-50 hidden overflow-hidden bg-ink-950 text-white transition-[height,opacity] duration-500 ease-[var(--ease-out-expo)] xl:block",
           scrolled ? "h-0 opacity-0" : "h-10 opacity-100",
         )}
       >
@@ -144,10 +144,10 @@ export function Header() {
         )}
         onMouseLeave={scheduleClose}
       >
-        <div className="shell flex h-[var(--header-h)] items-center justify-between gap-6">
-          <Logo />
+        <div className="shell flex h-[var(--header-h)] items-center justify-between gap-2 sm:gap-4 lg:gap-6">
+          <Logo className="min-w-0 shrink" />
 
-          <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
+          <nav aria-label="Main" className="hidden items-center gap-1 xl:flex">
             {primaryNav.map((item) => {
               const hasPanel = Boolean(item.columns);
               const open = openMenu === item.label;
@@ -189,25 +189,29 @@ export function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-1 sm:gap-2">
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
               aria-label="Search inventory"
-              className="grid h-10 w-10 place-items-center rounded-full text-ink-700 transition-colors hover:bg-ink-100 hover:text-accent-500"
+              className="grid h-11 w-11 place-items-center rounded-full text-ink-700 transition-colors hover:bg-ink-100 hover:text-accent-500 xl:h-10 xl:w-10"
             >
               <Search className="h-[1.15rem] w-[1.15rem]" aria-hidden="true" />
             </button>
 
             <a
               href={site.phoneHref}
-              className="hidden h-10 items-center gap-2 rounded-full px-3 text-sm font-semibold text-ink-800 transition-colors hover:bg-ink-100 hover:text-accent-500 md:flex lg:hidden xl:flex"
+              className="hidden h-10 items-center gap-2 rounded-full px-3 text-sm font-semibold text-ink-800 transition-colors hover:bg-ink-100 hover:text-accent-500 md:flex"
             >
               <Phone className="h-4 w-4 text-accent-500" aria-hidden="true" />
-              <span className="hidden xl:inline">{activeLocation.phone}</span>
+              <span className="hidden 2xl:inline">{activeLocation.phone}</span>
             </a>
 
-            <ButtonLink href="/specials" size="sm" className="hidden sm:inline-flex">
+            <ButtonLink
+              href="/specials"
+              size="sm"
+              className="h-10 px-3.5 text-[0.625rem] tracking-[0.1em] sm:h-9 sm:px-4 sm:text-[0.6875rem] sm:tracking-[0.12em]"
+            >
               Specials
               <SlideArrow />
             </ButtonLink>
@@ -217,7 +221,7 @@ export function Header() {
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
               aria-expanded={mobileOpen}
-              className="grid h-10 w-10 place-items-center rounded-full text-ink-900 transition-colors hover:bg-ink-100 lg:hidden"
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-full text-ink-900 transition-colors hover:bg-ink-100 active:bg-ink-200 xl:hidden"
             >
               <span className="flex w-5 flex-col gap-[5px]">
                 <span className="h-[2px] w-full rounded-full bg-current" />
@@ -238,13 +242,13 @@ export function Header() {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.26, ease: EASE }}
               onMouseEnter={cancelClose}
-              className="absolute inset-x-0 top-full hidden border-t border-ink-200 bg-white/95 backdrop-blur-xl shadow-lift-lg lg:block"
+              className="absolute inset-x-0 top-full hidden border-t border-ink-200 bg-white/95 backdrop-blur-xl shadow-lift-lg xl:block"
             >
               {primaryNav
                 .filter((item) => item.label === openMenu)
                 .map((item) => (
                   <div key={item.label} className="shell grid grid-cols-12 gap-8 py-9">
-                    <div className="col-span-8 grid grid-cols-3 gap-8">
+                    <div className="min-w-0 col-span-8 grid grid-cols-3 gap-8">
                       {item.columns?.map((col) => (
                         <div key={col.heading}>
                           <p className="eyebrow mb-4 text-ink-400">{col.heading}</p>
@@ -267,7 +271,7 @@ export function Header() {
                     {item.featured && (
                       <Link
                         href={item.featured.href}
-                        className="group/card col-span-4 flex flex-col justify-between overflow-hidden rounded-2xl bg-ink-900 p-7 text-white transition-shadow duration-500 hover:shadow-lift-lg"
+                        className="min-w-0 group/card col-span-4 flex flex-col justify-between overflow-hidden rounded-2xl bg-ink-900 p-7 text-white transition-shadow duration-500 hover:shadow-lift-lg"
                       >
                         <div>
                           <p className="eyebrow text-accent-400">{item.featured.heading}</p>

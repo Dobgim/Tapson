@@ -26,6 +26,8 @@
   --color-marine-500: #0e7c8a;
   --color-marine-400: #16a2b4;
 
+  --breakpoint-xs: 25rem;
+
   --font-display: var(--font-archivo), "Arial Narrow", system-ui, sans-serif;
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 
@@ -37,12 +39,18 @@
 
 @layer base {
   :root {
-    --header-h: 4.5rem;
+    --header-h: 4rem;
     color-scheme: light;
   }
 
   * {
     border-color: var(--color-ink-200);
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --header-h: 4.5rem;
+    }
   }
 
   html {
