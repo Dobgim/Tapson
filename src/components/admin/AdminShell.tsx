@@ -11,6 +11,7 @@ import {
   ExternalLink,
   LogOut,
   Menu,
+  ShoppingBag,
   X,
 } from "lucide-react";
 import { Logo } from "@/components/Logo";
@@ -20,6 +21,7 @@ import { cn } from "@/lib/utils";
 const NAV = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard, exact: true },
   { href: "/admin/inventory", label: "Inventory", icon: Bike },
+  { href: "/admin/orders", label: "Orders", icon: ShoppingBag },
   { href: "/admin/leads", label: "Enquiries", icon: Inbox },
   { href: "/admin/locations", label: "Locations", icon: MapPin },
 ];

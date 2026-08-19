@@ -119,7 +119,7 @@ export function Hero() {
         style={reduced ? undefined : { y: contentY, opacity: contentOpacity }}
         className="shell relative w-full pb-14 pt-32 sm:pb-20 sm:pt-40"
       >
-        <div className="max-w-3xl">
+        <div className="mx-auto max-w-3xl text-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
@@ -155,12 +155,15 @@ export function Hero() {
 
               <motion.p
                 variants={lineVariants(reduced)}
-                className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg"
+                className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg"
               >
                 {slide.body}
               </motion.p>
 
-              <motion.div variants={lineVariants(reduced)} className="mt-9 flex flex-wrap gap-3">
+              <motion.div
+                variants={lineVariants(reduced)}
+                className="mt-9 flex flex-wrap justify-center gap-3"
+              >
                 <ButtonLink href={slide.primary.href} size="lg">
                   {slide.primary.label}
                   <SlideArrow />

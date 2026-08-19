@@ -8,6 +8,7 @@ import { categories } from "@/data/categories";
 import { locations } from "@/data/site";
 import type { Product } from "@/data/products";
 import type { FormState } from "@/lib/admin/actions";
+import { ImageUploader } from "./ImageUploader";
 
 const input =
   "h-11 w-full rounded-lg border border-ink-200 bg-white px-3 text-sm text-ink-900 transition-colors focus:border-accent-500 focus:outline-none";
@@ -172,6 +173,8 @@ export function UnitForm({
         </div>
       </section>
 
+      <ImageUploader unitId={p?.id ?? ""} initial={p?.images ?? []} />
+
       {/* --------------------------------------------------- content ------ */}
       <section className="rounded-xl border border-ink-200 bg-white p-5">
         <h2 className="mb-4 font-display text-sm font-extrabold uppercase tracking-[0.08em] text-ink-900">
@@ -218,12 +221,6 @@ export function UnitForm({
         </Link>
       </div>
 
-      {!p && (
-        <p className="text-xs text-ink-400">
-          Photography is matched from <code>/public/images/products/</code> by unit id, so a new
-          unit shows broken images until files with the matching name are added.
-        </p>
-      )}
     </form>
   );
 }

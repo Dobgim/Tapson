@@ -124,7 +124,12 @@ function toRow(seed: ProductSeed) {
     description: seed.description ?? "",
     specifications: seed.specifications ?? [],
     features: seed.features ?? [],
-    images: [1, 2, 3].map((n) => `/images/products/${seed.id}-${n}.webp`),
+    // Uploaded photos win. Only fall back to the bundled artwork naming for
+    // the seeded units, which have no Storage objects behind them.
+    images:
+      seed.images && seed.images.length
+        ? seed.images
+        : [1, 2, 3].map((n) => `/images/products/${seed.id}-${n}.webp`),
     featured: Boolean(seed.featured),
     special: Boolean(seed.special),
   };
@@ -264,6 +269,144 @@ export async function setLeadStatus(id: string, status: LeadStatus): Promise<boo
 export async function deleteLead(id: string): Promise<boolean> {
   const supabase = await getSupabase();
   const { error } = await supabase.from("leads").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+  return true;
+}
+
+// -------------------------------------------------------------------- orders
+
+export type OrderStatus = "awaiting_payment" | "paid" | "fulfilled" | "cancelled";
+
+export type Order = {
+  id: string;
+  reference: string;
+  productId: string | null;
+  productTitle: string;
+  productImage: string | null;
+  stockNumber: string | null;
+  unitPrice: number;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  delivery: string;
+  address: string;
+  paymentMethod: string;
+  notes: string;
+  status: OrderStatus;
+  createdAt: string;
+};
+
+type OrderRow = {
+  id: string;
+  reference: string;
+  product_id: string | null;
+  product_title: string;
+  product_image: string | null;
+  stock_number: string | null;
+  unit_price: string | number;
+  customer_name: string;
+  customer_email: string;
+  customer_phone: string;
+  delivery: string;
+  address: string;
+  payment_method: string;
+  notes: string;
+  status: OrderStatus;
+  created_at: string;
+};
+
+function toOrder(row: OrderRow): Order {
+  return {
+    id: row.id,
+    reference: row.reference,
+    productId: row.product_id,
+    productTitle: row.product_title,
+    productImage: row.product_image,
+    stockNumber: row.stock_number,
+    unitPrice: num(row.unit_price),
+    customerName: row.customer_name,
+    customerEmail: row.customer_email,
+    customerPhone: row.customer_phone,
+    delivery: row.delivery,
+    address: row.address,
+    paymentMethod: row.payment_method,
+    notes: row.notes,
+    status: row.status,
+    createdAt: row.created_at,
+  };
+}
+
+export async function createOrder(input: {
+  reference: string;
+  productId: string | null;
+  productTitle: string;
+  productImage: string | null;
+  stockNumber: string | null;
+  unitPrice: number;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  delivery: string;
+  address: string;
+  paymentMethod: string;
+  notes: string;
+}): Promise<Order | null> {
+  if (!supabaseConfigured) return null;
+
+  const supabase = await getSupabase();
+  const { data, error } = await supabase
+    .from("orders")
+    .insert({
+      reference: input.reference,
+      product_id: input.productId,
+      product_title: input.productTitle,
+      product_image: input.productImage,
+      stock_number: input.stockNumber,
+      unit_price: input.unitPrice,
+      customer_name: input.customerName,
+      customer_email: input.customerEmail,
+      customer_phone: input.customerPhone,
+      delivery: input.delivery,
+      address: input.address,
+      payment_method: input.paymentMethod,
+      notes: input.notes,
+    })
+    .select()
+    .single();
+
+  if (error) {
+    console.error("[store] createOrder:", error.message);
+    return null;
+  }
+  return toOrder(data as OrderRow);
+}
+
+export async function listOrders(): Promise<Order[]> {
+  if (!supabaseConfigured) return [];
+
+  const supabase = await getSupabase();
+  const { data, error } = await supabase
+    .from("orders")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("[store] listOrders:", error.message);
+    return [];
+  }
+  return (data as OrderRow[]).map(toOrder);
+}
+
+export async function setOrderStatus(id: string, status: OrderStatus): Promise<boolean> {
+  const supabase = await getSupabase();
+  const { error } = await supabase.from("orders").update({ status }).eq("id", id);
+  if (error) throw new Error(error.message);
+  return true;
+}
+
+export async function deleteOrder(id: string): Promise<boolean> {
+  const supabase = await getSupabase();
+  const { error } = await supabase.from("orders").delete().eq("id", id);
   if (error) throw new Error(error.message);
   return true;
 }

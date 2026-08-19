@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Quote, Star } from "lucide-react";
+import { reviews } from "@/data/reviews";
 import { BreadcrumbSchema, PageHero } from "@/components/PageHero";
 import { BrandSection } from "@/components/BrandSection";
 import { LocationsSection } from "@/components/LocationsSection";
@@ -34,23 +35,6 @@ const timeline = [
   { year: "Today", title: "One shared inventory", body: "Three stores that operate as a single stock pool, so the right unit is never at the wrong address for long." },
 ];
 
-const reviews = [
-  {
-    body: "Bought a Sea-Doo here after two other dealers told me I'd be waiting until next season. Had it on a trailer in four days, rigged, registered and with the first service already booked.",
-    name: "Marcus D.",
-    detail: "Sea-Doo RXT-X · Burlington",
-  },
-  {
-    body: "The service department is the reason I keep coming back. They found a wiring fault two other shops missed and charged me for one hour of diagnostic time.",
-    name: "Priya R.",
-    detail: "Service customer · Burlington",
-  },
-  {
-    body: "No pressure, no commission games. The salesman actually talked me out of the bigger machine and into the right one. Second unit I've bought from them.",
-    name: "Tony V.",
-    detail: "Polaris RANGER · Burlington",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -137,7 +121,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="Reviews"
             title="What customers actually say"
-            body="Representative reviews from our stores. We don't filter the bad ones — we just try not to earn them."
+            body="Reviews from the sales floor, the service desk and the parts counter. We don't filter the bad ones — we just try not to earn them."
           />
           <Stagger className="mt-12 grid gap-5 lg:grid-cols-3" step={0.08}>
             {reviews.map((review) => (
@@ -148,9 +132,22 @@ export default function AboutPage() {
                     {review.body}
                   </blockquote>
                   <figcaption className="mt-6 border-t border-ink-100 pt-4">
-                    <div className="mb-1.5 flex gap-0.5" aria-label="5 out of 5 stars">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" aria-hidden="true" />
+                    {/* Render the review's own rating — hardcoding five would
+                        overstate anything below it. */}
+                    <div
+                      className="mb-1.5 flex gap-0.5"
+                      aria-label={`${review.rating} out of 5 stars`}
+                    >
+                      {[1, 2, 3, 4, 5].map((n) => (
+                        <Star
+                          key={n}
+                          className={
+                            n <= review.rating
+                              ? "h-3.5 w-3.5 fill-amber-400 text-amber-400"
+                              : "h-3.5 w-3.5 fill-ink-200 text-ink-200"
+                          }
+                          aria-hidden="true"
+                        />
                       ))}
                     </div>
                     <p className="font-display text-sm font-bold uppercase tracking-wide text-ink-900">

@@ -6,6 +6,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { FeaturedInventory } from "@/components/FeaturedInventory";
 import { FinancingCta } from "@/components/FinancingCta";
 import { Hero } from "@/components/Hero";
+import { Reviews } from "@/components/Reviews";
 import { InventoryQuickSearch } from "@/components/InventoryQuickSearch";
 import { LocationsSection } from "@/components/LocationsSection";
 import { Services } from "@/components/Services";
@@ -29,6 +30,7 @@ export default function HomePage() {
       <BrandSection />
       <Services />
       <About />
+      <Reviews />
       <FinancingCta />
       <LocationsSection />
       <ContactSection />

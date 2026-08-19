@@ -1,17 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { CalendarClock, MessageSquare, Phone, Repeat2 } from "lucide-react";
+import { CalendarClock, MessageSquare, Phone, Repeat2, ShoppingBag } from "lucide-react";
 import { Button, ButtonLink, SlideArrow } from "./ui/Button";
 import { Modal } from "./ui/Modal";
 import { RequestInfoForm } from "./forms/RequestInfoForm";
 import type { Location } from "@/data/site";
 
 export function ProductActions({
+  slug,
   title,
   stockNumber,
   store,
 }: {
+  slug: string;
   title: string;
   stockNumber: string;
   store?: Location;
@@ -21,10 +23,15 @@ export function ProductActions({
   return (
     <>
       <div className="space-y-2.5">
-        <Button size="lg" className="w-full" onClick={() => setDialog("info")}>
+        <ButtonLink href={`/order/${slug}`} size="lg" className="w-full">
+          <ShoppingBag className="h-4 w-4" aria-hidden="true" />
+          Order this unit
+          <SlideArrow />
+        </ButtonLink>
+
+        <Button variant="secondary" size="lg" className="w-full" onClick={() => setDialog("info")}>
           <MessageSquare className="h-4 w-4" aria-hidden="true" />
           Request information
-          <SlideArrow />
         </Button>
 
         <div className="grid gap-2.5 sm:grid-cols-2">

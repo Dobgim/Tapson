@@ -22,6 +22,9 @@ export type ProductSeed = {
   description: string;
   specifications: { label: string; value: string }[];
   features: string[];
+  /** Public Storage URLs uploaded via the dashboard. Falls back to the
+   *  bundled artwork convention when a unit has none yet. */
+  images?: string[];
   featured?: boolean;
   special?: boolean;
 };

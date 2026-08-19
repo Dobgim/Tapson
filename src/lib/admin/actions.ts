@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { signIn, signOut, getSession } from "./auth";
 import * as store from "./store";
-import type { LeadStatus } from "./store";
+import type { LeadStatus, OrderStatus } from "./store";
 import type { CategorySlug } from "@/data/categories";
 import type { Condition, ProductSeed } from "@/data/products";
 
@@ -32,6 +32,17 @@ export async function loginAction(_prev: FormState, formData: FormData): Promise
 export async function logoutAction() {
   await signOut();
   redirect("/admin/login");
+}
+
+/** The uploader posts a JSON array of public Storage URLs. */
+function parseImages(raw: FormDataEntryValue | null): string[] {
+  if (typeof raw !== "string" || !raw.trim()) return [];
+  try {
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter((u) => typeof u === "string" && u) : [];
+  } catch {
+    return [];
+  }
 }
 
 function toSeed(formData: FormData, id: string): ProductSeed {
@@ -65,6 +76,7 @@ function toSeed(formData: FormData, id: string): ProductSeed {
       .split("\n")
       .map((f) => f.trim())
       .filter(Boolean),
+    images: parseImages(formData.get("images")),
     featured: formData.get("featured") === "on",
     special: formData.get("special") === "on",
   };
@@ -159,6 +171,35 @@ export async function setLeadStatusAction(formData: FormData) {
       console.error("[admin] setLeadStatus:", err);
     }
     revalidatePath("/admin/leads");
+    revalidatePath("/admin");
+  }
+}
+
+export async function setOrderStatusAction(formData: FormData) {
+  await requireSession();
+  const id = String(formData.get("id") ?? "");
+  const status = String(formData.get("status") ?? "") as OrderStatus;
+  if (id && status) {
+    try {
+      await store.setOrderStatus(id, status);
+    } catch (err) {
+      console.error("[admin] setOrderStatus:", err);
+    }
+    revalidatePath("/admin/orders");
+    revalidatePath("/admin");
+  }
+}
+
+export async function deleteOrderAction(formData: FormData) {
+  await requireSession();
+  const id = String(formData.get("id") ?? "");
+  if (id) {
+    try {
+      await store.deleteOrder(id);
+    } catch (err) {
+      console.error("[admin] deleteOrder:", err);
+    }
+    revalidatePath("/admin/orders");
     revalidatePath("/admin");
   }
 }

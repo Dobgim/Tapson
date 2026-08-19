@@ -221,7 +221,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 )}
 
                 <div className="mt-6">
-                  <ProductActions title={product.title} stockNumber={product.stockNumber} store={store} />
+                  <ProductActions
+                    slug={product.slug}
+                    title={product.title}
+                    stockNumber={product.stockNumber}
+                    store={store}
+                  />
                 </div>
 
                 <p className="mt-5 flex items-start gap-2 text-[0.6875rem] leading-relaxed text-ink-500">
