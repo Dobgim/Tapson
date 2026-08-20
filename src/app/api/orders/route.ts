@@ -14,7 +14,6 @@ import { site, locations } from "@/data/site";
  */
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
 type Body = {
   productId?: string;
@@ -44,39 +43,6 @@ function money(value: number) {
     currency: "USD",
     maximumFractionDigits: 0,
   }).format(value);
-}
-
-/** Fire-and-forget notification. Never throws into the request path. */
-async function notify(order: Record<string, string | number>) {
-  const key = process.env.WEB3FORMS_ACCESS_KEY;
-  if (!key) {
-    console.warn("[orders] WEB3FORMS_ACCESS_KEY not set — no email sent");
-    return { sent: false, reason: "not-configured" as const };
-  }
-
-  try {
-    const res = await fetch(WEB3FORMS_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        access_key: key,
-        subject: `New order ${order.reference} — ${order.product}`,
-        from_name: `${site.name} website`,
-        // Replying to the notification reaches the customer directly.
-        replyto: order.customer_email,
-        ...order,
-      }),
-    });
-    const json = (await res.json()) as { success?: boolean; message?: string };
-    if (!json.success) {
-      console.error("[orders] web3forms rejected:", json.message);
-      return { sent: false, reason: "rejected" as const };
-    }
-    return { sent: true, reason: null };
-  } catch (err) {
-    console.error("[orders] web3forms failed:", err);
-    return { sent: false, reason: "error" as const };
-  }
 }
 
 export async function POST(request: Request) {
@@ -145,8 +111,12 @@ export async function POST(request: Request) {
     );
   }
 
+  // Web3Forms refuses server-side submissions on the free plan — it answers
+  // "Use our API in client side ... Pro plan is required". So the payload is
+  // assembled here and handed back for the browser to deliver, which is the
+  // usage Web3Forms intends. The order is already safely stored either way.
   const store = locations[0];
-  const notification = await notify({
+  const notification = {
     reference: ref,
     product: title,
     stock_number: body.stockNumber ?? "—",
@@ -158,12 +128,12 @@ export async function POST(request: Request) {
     customer_phone: phone,
     notes: (body.notes ?? "").trim() || "—",
     placed_at: placedAt,
-  });
+  };
 
   return NextResponse.json({
     ok: true,
     reference: ref,
     placedAt,
-    emailed: notification.sent,
+    notification,
   });
 }

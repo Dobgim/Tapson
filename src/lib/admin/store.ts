@@ -250,13 +250,22 @@ export async function createLead(
   if (!supabaseConfigured) return null;
 
   const supabase = await getSupabase();
-  const { data, error } = await supabase.from("leads").insert(input).select().single();
+  // No .select() here. Reading a lead back requires the staff-only SELECT
+  // policy, and this runs as the anonymous visitor submitting the form — the
+  // read would be refused and take the whole insert down with it. Everything
+  // the caller needs is already in hand.
+  const { error } = await supabase.from("leads").insert(input);
 
   if (error) {
     console.error("[store] createLead:", error.message);
     return null;
   }
-  return toLead(data as LeadRow);
+  return {
+    ...input,
+    id: `lead-${Date.now()}`,
+    status: "new",
+    createdAt: new Date().toISOString(),
+  };
 }
 
 export async function setLeadStatus(id: string, status: LeadStatus): Promise<boolean> {
@@ -370,15 +379,33 @@ export async function createOrder(input: {
       address: input.address,
       payment_method: input.paymentMethod,
       notes: input.notes,
-    })
-    .select()
-    .single();
+    });
 
   if (error) {
     console.error("[store] createOrder:", error.message);
     return null;
   }
-  return toOrder(data as OrderRow);
+  // Built from the input rather than read back, for the same reason as
+  // createLead: an order is staff-only to read, and this runs as the
+  // anonymous customer placing it.
+  return {
+    id: input.reference,
+    reference: input.reference,
+    productId: input.productId,
+    productTitle: input.productTitle,
+    productImage: input.productImage,
+    stockNumber: input.stockNumber,
+    unitPrice: input.unitPrice,
+    customerName: input.customerName,
+    customerEmail: input.customerEmail,
+    customerPhone: input.customerPhone,
+    delivery: input.delivery,
+    address: input.address,
+    paymentMethod: input.paymentMethod,
+    notes: input.notes,
+    status: "awaiting_payment",
+    createdAt: new Date().toISOString(),
+  };
 }
 
 export async function listOrders(): Promise<Order[]> {

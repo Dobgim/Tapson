@@ -21,6 +21,43 @@ function money(value: number) {
   }).format(value);
 }
 
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+
+/**
+ * Deliver the order notification from the browser.
+ *
+ * Web3Forms rejects server-side calls on the free plan ("Use our API in
+ * client side ... Pro plan is required"), so this has to run here. The access
+ * key is designed to be public and only permits submitting to this one form.
+ *
+ * Returns whether the mail went out. Never throws: the order is already saved
+ * in the database and visible in the dashboard, so a mail outage must not
+ * cost the customer their invoice.
+ */
+async function sendNotification(payload: Record<string, string | number> | undefined) {
+  const key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+  if (!key || !payload) return false;
+
+  try {
+    const res = await fetch(WEB3FORMS_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: key,
+        subject: `New order ${payload.reference} — ${payload.product}`,
+        from_name: "Repossessed Rides website",
+        // Replying to the notification reaches the customer directly.
+        replyto: payload.customer_email,
+        ...payload,
+      }),
+    });
+    const json = (await res.json()) as { success?: boolean };
+    return Boolean(json.success);
+  } catch {
+    return false;
+  }
+}
+
 export function OrderForm({ product }: { product: Product }) {
   const [method, setMethod] = useState<PaymentMethodId | "">("");
   const [delivery, setDelivery] = useState<"collection" | "delivery">("collection");
@@ -60,10 +97,15 @@ export function OrderForm({ product }: { product: Product }) {
         setError(json.error ?? "Something went wrong. Please call us instead.");
         return;
       }
+      // Web3Forms only accepts submissions from the browser on the free plan,
+      // so the notification is delivered from here rather than the server. The
+      // order is already stored, so a mail failure must not block the invoice.
+      const emailed = await sendNotification(json.notification);
+
       setPlaced({
         reference: json.reference,
         placedAt: json.placedAt,
-        emailed: Boolean(json.emailed),
+        emailed,
         product,
         customerName: payload.name,
         customerEmail: payload.email,
