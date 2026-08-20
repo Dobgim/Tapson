@@ -30,6 +30,17 @@ const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
  * client side ... Pro plan is required"), so this has to run here. The access
  * key is designed to be public and only permits submitting to this one form.
  *
+ * The body must be FormData, not JSON. A JSON body sets
+ * Content-Type: application/json, which makes this a non-simple cross-origin
+ * request and triggers a CORS preflight. Web3Forms does not answer the
+ * preflight, so the browser blocks the send outright:
+ *
+ *   Access to fetch at 'https://api.web3forms.com/submit' from origin
+ *   '…' has been blocked by CORS policy: Response to preflight request…
+ *
+ * FormData is a simple request, so no preflight happens. This is the shape
+ * their own documentation uses.
+ *
  * Returns whether the mail went out. Never throws: the order is already saved
  * in the database and visible in the dashboard, so a mail outage must not
  * cost the customer their invoice.
@@ -38,19 +49,16 @@ async function sendNotification(payload: Record<string, string | number> | undef
   const key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
   if (!key || !payload) return false;
 
+  const form = new FormData();
+  form.append("access_key", key);
+  form.append("subject", `New order ${payload.reference} — ${payload.product}`);
+  form.append("from_name", "Repossessed Rides website");
+  // Replying to the notification reaches the customer directly.
+  form.append("replyto", String(payload.customer_email ?? ""));
+  for (const [k, v] of Object.entries(payload)) form.append(k, String(v));
+
   try {
-    const res = await fetch(WEB3FORMS_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        access_key: key,
-        subject: `New order ${payload.reference} — ${payload.product}`,
-        from_name: "Repossessed Rides website",
-        // Replying to the notification reaches the customer directly.
-        replyto: payload.customer_email,
-        ...payload,
-      }),
-    });
+    const res = await fetch(WEB3FORMS_ENDPOINT, { method: "POST", body: form });
     const json = (await res.json()) as { success?: boolean };
     return Boolean(json.success);
   } catch {
