@@ -10,7 +10,12 @@ export const site = {
   tagline: "Vermont's Powersports & Marine Superstore",
   description:
     "Motorcycles, ATVs, side-by-sides, watercraft, boats and golf carts from Yamaha, Suzuki, Polaris, Can-Am, Sea-Doo and CFMOTO. Sales, service, parts and financing in Burlington, Vermont.",
-  url: "https://repossessed-rides.example.com",
+  // Every canonical tag, Open Graph URL, sitemap entry and JSON-LD @id is
+  // built from this. It must be the live hostname: the apex 308-redirects to
+  // www, so www is the canonical one. A wrong value here tells Google the
+  // real pages are duplicates of somewhere else, which keeps them out of
+  // results entirely.
+  url: "https://www.repossessedrides.com",
   email: "repossessedride@gmail.com",
   phone: "(802) 343-2491",
   phoneHref: "tel:+18023432491",
