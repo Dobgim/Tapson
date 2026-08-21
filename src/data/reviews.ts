@@ -21,6 +21,15 @@ export type Review = {
   rating: 1 | 2 | 3 | 4 | 5;
   /** ISO date — rendered as a readable month. */
   date: string;
+  /**
+   * Set true ONLY for a real review from a real customer.
+   *
+   * Star-rating structured data is emitted from verified entries alone.
+   * Search engines treat fabricated review markup as a manual-action
+   * offence, and it misrepresents the business to anyone reading a result.
+   * Leave this unset while the entry is a placeholder.
+   */
+  verified?: boolean;
 };
 
 export const reviews: Review[] = [
@@ -93,3 +102,41 @@ export const reviews: Review[] = [
 /** Rounded to one decimal, e.g. 4.9 */
 export const averageRating =
   Math.round((reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length) * 10) / 10;
+
+/** Only entries confirmed genuine. Placeholders never reach structured data. */
+export const verifiedReviews = reviews.filter((r) => r.verified);
+
+/**
+ * schema.org aggregateRating + review nodes, or null when there is nothing
+ * genuine to publish. Returning null keeps the markup off the page entirely
+ * rather than emitting a zero-count rating, which search engines flag.
+ *
+ * This activates on its own: mark reviews `verified: true` as real ones come
+ * in, and the star markup starts being emitted with no further code change.
+ */
+export function reviewSchema() {
+  if (verifiedReviews.length === 0) return null;
+
+  const total = verifiedReviews.reduce((sum, r) => sum + r.rating, 0);
+  return {
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: Math.round((total / verifiedReviews.length) * 10) / 10,
+      reviewCount: verifiedReviews.length,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    review: verifiedReviews.map((r) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: r.name },
+      datePublished: r.date,
+      reviewBody: r.body,
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: r.rating,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    })),
+  };
+}

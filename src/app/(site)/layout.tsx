@@ -2,9 +2,14 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageLoader } from "@/components/PageLoader";
 import { locations, site } from "@/data/site";
+import { reviewSchema } from "@/data/reviews";
 
 /** Organization + per-store LocalBusiness graph, emitted once site-wide. */
 function OrganizationSchema() {
+  // Null while every review is still a placeholder, so no rating markup is
+  // published until there is something genuine behind it.
+  const ratings = reviewSchema();
+
   const graph = {
     "@context": "https://schema.org",
     "@graph": [
@@ -21,6 +26,7 @@ function OrganizationSchema() {
       ...locations.map((loc) => ({
         "@type": "AutomotiveBusiness",
         "@id": `${site.url}/locations#${loc.id}`,
+        ...(ratings ?? {}),
         name: loc.name,
         parentOrganization: { "@id": `${site.url}#organization` },
         telephone: loc.phone,

@@ -52,7 +52,7 @@ const seeds: ProductSeed[] = [
     stockNumber: "RM-24901",
     color: "Matte Raven Black",
     description:
-      "The MT-09 SP takes the 890cc CP3 triple and wraps it in fully adjustable KYB front forks and an Öhlins rear shock. Cruise control, a six-axis IMU and three-mode traction control make it as usable on the Turnpike as it is aggressive through the Redland backroads.",
+      "The MT-09 SP takes the 890cc CP3 triple and wraps it in fully adjustable KYB front forks and an Öhlins rear shock. Cruise control, a six-axis IMU and three-mode traction control make it as usable on I-89 as it is aggressive through the Notch.",
     specifications: [
       { label: "Engine", value: "890cc liquid-cooled DOHC inline 3-cylinder" },
       { label: "Bore x Stroke", value: "78.0mm x 62.0mm" },
@@ -284,7 +284,7 @@ const seeds: ProductSeed[] = [
     stockNumber: "RM-24009",
     color: "Torch Red",
     description:
-      "Twin 1.8L High Output engines, a 24-foot deck and Yamaha's Connext helm. The 242X is the boat that turns a Sunday sandbar run into the reason you bought a trailer.",
+      "Twin 1.8L High Output engines, a 24-foot deck and Yamaha's Connext helm. The 242X is the boat that turns a Sunday on Champlain into the reason you bought a trailer.",
     specifications: [
       { label: "Engines", value: "Twin 1812cc Yamaha Marine HO" },
       { label: "Length", value: "24 ft 0 in" },
@@ -472,7 +472,7 @@ const seeds: ProductSeed[] = [
     stockNumber: "RM-24703",
     color: "Matte Gray",
     description:
-      "A 292cc sport scooter with real brakes, traction control and enough under-seat storage for two helmets. It makes Brickell traffic feel optional.",
+      "A 292cc sport scooter with real brakes, traction control and enough under-seat storage for two helmets. It makes downtown Burlington traffic feel optional.",
     specifications: [
       { label: "Engine", value: "292cc liquid-cooled SOHC single" },
       { label: "Transmission", value: "V-belt automatic" },
@@ -598,7 +598,7 @@ const seeds: ProductSeed[] = [
     stockNumber: "RM-24525",
     color: "Solid Special White",
     description:
-      "A genuinely tough utility quad with independent rear suspension and one of the best power steering systems in the class. Built for salt air and long days.",
+      "A genuinely tough utility quad with independent rear suspension and one of the best power steering systems in the class. Built for mud season and long days.",
     specifications: [
       { label: "Engine", value: "722cc liquid-cooled single" },
       { label: "Drive", value: "2WD / 4WD with diff lock" },
