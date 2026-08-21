@@ -10,6 +10,18 @@ function OrganizationSchema() {
   // published until there is something genuine behind it.
   const ratings = reviewSchema();
 
+  // sameAs must point at THIS business's profiles. A bare "facebook.com/"
+  // asserts the dealership is the same entity as Facebook itself, which
+  // corrupts exactly the entity matching that branded search relies on.
+  // Placeholders have no path, so they are dropped until real profiles exist.
+  const profiles = Object.values(site.social).filter((url) => {
+    try {
+      return new URL(url).pathname.replace(/\/+$/, "").length > 0;
+    } catch {
+      return false;
+    }
+  });
+
   const graph = {
     "@context": "https://schema.org",
     "@graph": [
@@ -17,11 +29,21 @@ function OrganizationSchema() {
         "@type": "Organization",
         "@id": `${site.url}#organization`,
         name: site.name,
+        // Helps Google tie query variants — "repossessedrides", the bare
+        // domain — back to this one business.
+        alternateName: ["Repossessed Rides Motorsports", "repossessedrides"],
         url: site.url,
         email: site.email,
         telephone: site.phone,
         description: site.description,
-        sameAs: Object.values(site.social),
+        ...(profiles.length ? { sameAs: profiles } : {}),
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${site.url}#website`,
+        name: site.name,
+        url: site.url,
+        publisher: { "@id": `${site.url}#organization` },
       },
       ...locations.map((loc) => ({
         "@type": "AutomotiveBusiness",
